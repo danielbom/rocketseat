@@ -1,0 +1,37 @@
+type Point {
+  id: ID!
+  image: String!
+  name: String!
+  email: String!
+  whatsapp: String!
+  latitude: Float!
+  longitude: Float!
+  city: String!
+  uf: String!
+  items: [Item]!
+}
+
+type Item {
+  id: ID!
+  image: String!
+  title: String!
+  points: [Point]!
+}
+
+type Query {
+  points: [Point]!
+  items: [Item]!
+}
+
+type Mutation {
+  storePoint(
+    name: String!
+    email: String!
+    whatsapp: String!
+    latitude: Float!
+    longitude: Float!
+    city: String!
+    uf: String!
+    items: [ID!]!
+  ): Point
+}

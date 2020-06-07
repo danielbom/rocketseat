@@ -9,8 +9,12 @@ import itemsController from "./controllers/items";
 
 import pointsValidation from "./validations/points";
 
+import graphql from "./graphql/with-builder";
+
 const router = Router();
 const uploader = multer(multerConfig);
+
+router.use("/graphql", graphql);
 
 router.get("/items", wrap(itemsController.index));
 
