@@ -21,11 +21,11 @@ export const db = {
     show(id: number) {
       return api.get<{ point: Point, items: Pick<Item, "title">[] }>(`points/${id}`);
     },
-    upload(id: number, image: File) {
+    image(id: number, image: File) {
       const data = new FormData();
       data.append("image", image);
 
-      return api.post(`points/${id}/upload`, data);
+      return api.post(`points/${id}/image`, data);
     }
   },
 };

@@ -19,6 +19,6 @@ router.get("/points/:id", wrap(pointsController.show));
 router.post("/points", pointsValidation.store, uploader.single("image"), wrap(pointsController.store));
 router.delete("/points/:id", pointsValidation.delete, wrap(pointsController.delete));
 
-router.post("/points/:id/upload", uploader.single("image"), wrap(pointsController.upload));
+router.post("/points/:id/image", uploader.single("image"), wrap(pointsController.image));
 
 export default router;

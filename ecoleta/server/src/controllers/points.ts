@@ -76,7 +76,7 @@ class PointsController {
     return res.json({ id });
   }
 
-  async upload(req: Request, res: Response) {
+  async image(req: Request, res: Response) {
     const id = Number(req.params.id);
 
     await knex("points").update({ image: req.file.filename }).where("id", id);

@@ -77,7 +77,7 @@ const CreatePoint: React.FC = () => {
       const items = selectedItems;
 
       const res = await api.db.points.store({ point, items });
-      await api.db.points.upload(res.data.id, selectedFile);
+      await api.db.points.image(res.data.id, selectedFile);
 
       alert('Ponto de coleta criado!');
       history.push('/');
