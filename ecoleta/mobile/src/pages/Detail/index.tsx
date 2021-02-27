@@ -63,7 +63,7 @@ const Detail: React.FC = () => {
         >
           <FontAwesome name="whatsapp" size={20} color="#FFF" />
           <Text style={styles.buttonText}>
-            Whasapp
+            Whatsapp
           </Text>
         </RectButton>
 
