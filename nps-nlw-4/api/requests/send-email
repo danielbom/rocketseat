@@ -1,0 +1,17 @@
+#!/bin/bash
+
+url="localhost:3333/send-mail"
+
+data='''{
+  "email": "dani@rocketseat.com.br",
+  "survey_id": "b0d5d2df-34cd-40d9-9c7e-e4c8b41a9154"
+}'''
+
+echo $data | jq
+
+time curl --silent \
+  --max-time 8 \
+  --request POST \
+  --header 'content-type: application/json' \
+  --data "$data" \
+  --url $url | jq

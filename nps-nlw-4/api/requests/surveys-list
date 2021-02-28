@@ -1,0 +1,9 @@
+#!/bin/bash
+
+url="localhost:3333/surveys"
+
+time curl --silent \
+  --max-time 2 \
+  --request GET \
+  --header 'content-type: application/json' \
+  --url $url | jq

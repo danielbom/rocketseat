@@ -1,0 +1,17 @@
+#!/bin/bash
+
+url="localhost:3333/surveys"
+
+data='''{
+  "title": "Queremos ouvir sua opinião!",
+  "description": "De 0 a 10, quanto você recomendaria a Rocketseat?"
+}'''
+
+echo $data | jq
+
+time curl --silent \
+  --max-time 2 \
+  --request POST \
+  --header 'content-type: application/json' \
+  --data "$data" \
+  --url $url | jq

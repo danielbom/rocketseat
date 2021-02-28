@@ -1,0 +1,9 @@
+#!/bin/bash
+
+url="localhost:3333/nps/b0d5d2df-34cd-40d9-9c7e-e4c8b41a9154"
+
+time curl --silent \
+  --max-time 2 \
+  --request GET \
+  --header 'content-type: application/json' \
+  --url $url | jq

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+url="localhost:3333/users"
+
+data='''{
+  "name": "Dani",
+  "email": "dani@rocketseat.com.br"
+}'''
+
+echo $data | jq
+
+time curl --silent \
+  --max-time 2 \
+  --request POST \
+  --header 'content-type: application/json' \
+  --data "$data" \
+  --url $url | jq
