@@ -4,9 +4,9 @@ const path = require('path')
 
 const view = (name) => path.resolve(__dirname, 'view', name);
 
-routes.get('/', (_req, res) => res.sendFile(view('index.html')))
-routes.get('/job', (_req, res) => res.sendFile(view('/job.html')))
-routes.get('/job/edit', (_req, res) => res.sendFile(view('/job-edit.html')))
-routes.get('/profile', (_req, res) => res.sendFile(view('/profile.html')))
+routes.get('/', (_req, res) => res.render(view('index.ejs')))
+routes.get('/job', (_req, res) => res.render(view('job.ejs')))
+routes.get('/job/edit', (_req, res) => res.render(view('job-edit.ejs')))
+routes.get('/profile', (_req, res) => res.render(view('profile.ejs')))
 
 module.exports = routes
