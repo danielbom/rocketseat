@@ -52,7 +52,7 @@ config :phoenix, :stacktrace_depth, 20
 config :rocketpay, Rocketpay.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   database: "rocketpay_dev",
   hostname: "localhost",
   pool_size: 10

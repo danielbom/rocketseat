@@ -40,7 +40,9 @@ defmodule Rocketpay.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:plug_cowboy, "~> 1.0"},
     ]
   end
 

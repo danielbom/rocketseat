@@ -12,7 +12,7 @@ config :rocketpay,
 # Configures the endpoint
 config :rocketpay, RocketpayWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "CJLuttU+kvbq6Yuy3Q2J9sZ46/G8DG6Xyhg9uNtjmg0Khj4xKADGJmYjOiZCDt4O",
+  secret_key_base: "ry3/0g2zITw411+Idw0F1fEFQdm8z3YIMQ3E6o3YIDq7hK1o/Zy4peptBgeZ5zDC",
   render_errors: [view: RocketpayWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Rocketpay.PubSub,
            adapter: Phoenix.PubSub.PG2]

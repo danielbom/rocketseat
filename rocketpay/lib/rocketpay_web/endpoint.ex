@@ -35,7 +35,7 @@ defmodule RocketpayWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_rocketpay_key",
-    signing_salt: "4sZSkKgO"
+    signing_salt: "bGIXdNZK"
 
   plug RocketpayWeb.Router
 
