@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -i node_modules src"
+    "dev": "nodemon -i node_modules src/server.js"
   },
   "dependencies": {
     "ejs": "^3.1.6",
