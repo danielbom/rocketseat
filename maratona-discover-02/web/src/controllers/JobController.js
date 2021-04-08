@@ -1,29 +1,9 @@
-const Profile = require('../models/Profile')
 const Job = require('../models/Job')
-const JobUtils = require('../utils/JobUtils')
-
-const JobView = {
-  one(job) {
-    const profile = Profile.get()
-    const deadline = JobUtils.jobDeadline(job)
-    const status = deadline <= 0 ? 'done' : 'progress'
-    const budget = profile["value-hour"] * job["total-hours"]
-
-    return {
-      ...job,
-      deadline,
-      status,
-      budget
-    }
-  },
-}
+const JobMapper = require('../mappers/JobMapper')
 
 module.exports = {
   create(_req, res) {
     res.render("job")
-  },
-  index(_req, res) {
-    res.render("index", { jobs: Job.get().map(JobView.one) })
   },
   store(req, res) {
     // Body { name: string, "daily-hours": number, "total-hours": number }
@@ -50,7 +30,7 @@ module.exports = {
     const job = jobs.find(x => x.id === jobId)
 
     if (job) {
-      res.render("job-edit", { job: JobView.one(job) })
+      res.render("job-edit", { job: JobMapper.one(job) })
     } else {
       res.send('Job not found!')
     }
