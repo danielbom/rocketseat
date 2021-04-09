@@ -7,19 +7,11 @@ module.exports = {
   },
   store(req, res) {
     // Body { name: string, "daily-hours": number, "total-hours": number }
-    const jobs = Job.get()
-    const lastId = jobs[jobs.length - 1]?.id || 0
-    const newId = lastId + 1
-    const dailyHours = Number(req.body["daily-hours"])
-    const totalHours = Number(req.body["total-hours"])
-    const createdAt = Date.now()
-
-    jobs.push({
-      id: newId,
+    Job.create({
       name: req.body.name,
-      "daily-hours": dailyHours,
-      "total-hours": totalHours,
-      createdAt
+      "daily-hours": Number(req.body["daily-hours"]),
+      "total-hours": Number(req.body["total-hours"]),
+      createdAt: Date.now()
     })
 
     res.redirect("/")

@@ -14,5 +14,5 @@ server.use(express.urlencoded({ extended: true }))
 server.use(routes)
 
 server.listen(3000, () => {
-  console.log('...');
+  console.log('Running app on localhost:3000');
 })

@@ -17,5 +17,11 @@ let data = [
 
 module.exports = {
   get() { return data },
-  update(value) { data = value }
+  update(value) { data = value },
+  create(newJob) {
+    const lastId = data[data.length - 1]?.id || 0
+    const newId = lastId + 1
+    newJob.id = newId
+    data.push(newJob)
+  }
 }
