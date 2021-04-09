@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -i node_modules src/server.js"
+    "dev": "nodemon -i node_modules src/server.js",
+    "init-db": "rm database.sqlite && node src/database/init.js"
   },
   "dependencies": {
     "ejs": "^3.1.6",
