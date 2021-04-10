@@ -3,9 +3,10 @@ const Profile = require('../models/Profile')
 const JobMapper = require('../mappers/JobMapper')
 
 module.exports = {
-  index(_req, res) {
-    const profile = Profile.get()
-    const jobs = Job.get().map(JobMapper.one)
+  async index(_req, res) {
+    const profile = await Profile.get()
+    let jobs = await Job.get()
+    jobs = jobs.map(JobMapper.one({ profile }))
 
     const status = {
       progress: 0,

@@ -1,13 +1,14 @@
 const Job = require('../models/Job')
+const Profile = require('../models/Profile')
 const JobMapper = require('../mappers/JobMapper')
 
 module.exports = {
   create(_req, res) {
     res.render("job")
   },
-  store(req, res) {
+  async store(req, res) {
     // Body { name: string, "daily-hours": number, "total-hours": number }
-    Job.create({
+    await Job.create({
       name: req.body.name,
       "daily-hours": Number(req.body["daily-hours"]),
       "total-hours": Number(req.body["total-hours"]),
@@ -16,40 +17,41 @@ module.exports = {
 
     res.redirect("/")
   },
-  edit(req, res) {
+  async edit(req, res) {
     const jobId = Number(req.params.id)
-    const jobs = Job.get()
+    const jobs = await Job.get()
     const job = jobs.find(x => x.id === jobId)
 
     if (job) {
-      res.render("job-edit", { job: JobMapper.one(job) })
+      const profile = await Profile.get()
+      res.render("job-edit", { job: JobMapper.one({ profile })(job) })
     } else {
       res.send('Job not found!')
     }
   },
-  update(req, res) {
+  async update(req, res) {
     const jobId = Number(req.params.id)
-    const jobs = Job.get()
-    const index = jobs.findIndex(x => x.id === jobId)
+    const job = await Job.getById(jobId)
 
-    if (index >= 0) { 
-      Job.update(jobs.map((job, i) => {
-        if (i === index) return { ...job, ...req.body }
-        return job
-      }))
+    if (job) {
+      Job.updateById({
+        id: jobId,
+        name: req.body.name ?? job.name,
+        "daily-hours": req.body["daily-hours"] ? Number(req.body["daily-hours"]) : job["daily-hours"],
+        "total-hours": req.body["total-hours"] ? Number(req.body["total-hours"]) : job["total-hours"],
+      })
 
       res.redirect('/job/' + req.params.id)
     } else {
       res.send('Job not found!')
     }
   },
-  delete(req, res) {
+  async delete(req, res) {
     const jobId = Number(req.params.id)
-    const jobs = Job.get()
+    const job = await Job.getById(jobId)
 
-    const index = jobs.findIndex(x => x.id === jobId)
-    if (index >= 0) {
-      Job.update(jobs.filter((_job, i) => i !== index))
+    if (job) {
+      await Job.deleteById(jobId)
       res.redirect('/')
     } else {
       res.send('Job not found!')
