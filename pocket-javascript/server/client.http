@@ -1,0 +1,37 @@
+# @name Create Goal
+POST http://localhost:3333/goals
+Content-Type: application/json
+{
+  "title": "Nadar",
+  "desiredWeeklyFrequency": 2
+}
+
+###
+
+# @name Create Goal
+POST http://localhost:3333/goals
+Content-Type: application/json
+{
+  "title": "Não usar o celular",
+  "desiredWeeklyFrequency": 3
+}
+
+###
+
+# @name Get Week Pending Goals
+GET http://localhost:3333/pending-goals
+
+
+###
+
+# @name Create Completion
+POST http://localhost:3333/completions
+Content-Type: application/json
+{
+  "goalId": "qa91r6j7jzz9z2zres4wkyqe"
+}
+
+###
+
+# @name Get Summary
+GET http://localhost:3333/summary
